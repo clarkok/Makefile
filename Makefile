@@ -8,11 +8,12 @@ INCLUDE_DIR	= src/
 OBJECT_DIR	= objs/
 DEPENDENCY_DIR	= dep/
 
-COMPILER		= g++
-LINKER			= g++
-COMPILE_FLAGS	= -O2 -Wall -g -I$(INCLUDE_DIR) -c
-LINK_FLAGS		= -g 
-DEP_FLAGS		= -I$(INCLUDE_DIR) -MM -MF $(DEPENDENCY_DIR)$(addsuffix .d,$(basename $(notdir $<)))
+COMPILER		= clang++
+LINKER			= clang++
+COMMON_FLAGS	= -O2 -std=c++11 -Wall -g -I$(INCLUDE_DIR)
+COMPILE_FLAGS	= $(COMMON_FLAGS) -c
+LINK_FLAGS		= $(COMMON_FLAGS) -g
+DEP_FLAGS			= $(COMMON_FLAGS) -MM -MF $(DEPENDENCY_DIR)$(addsuffix .d,$(basename $(notdir $<)))
 COMPILE_CMD		= $(COMPILER) $(COMPILE_FLAGS) -o $@ $<
 LINK_CMD		= $(LINKER) $(LINK_FLAGS) -o $@ $^
 DEP_CMD			= $(COMPILER) $(DEP_FLAGS) $<
