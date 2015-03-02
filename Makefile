@@ -29,7 +29,7 @@ $(TARGET) 	: $(OBJECTS)
 	$(LINK_CMD)
 
 define COMPILE_MACRO
-$(OBJECT_DIR)$(subst /,-,$(1).o) 	: $(SOURCE_DIR)$(1)
+$(OBJECT_DIR)$(subst /,-,$(basename $(1)).o) 	: $(SOURCE_DIR)$(1)
 	$(COMPILE_CMD)
 	@$(DEP_CMD)
 	@sed -e 's#\s*[a-zA-Z/]*\.o#$$@#g'\
