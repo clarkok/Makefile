@@ -41,8 +41,11 @@ $(foreach i,$(SOURCES),$(eval $(call COMPILE_MACRO,$(i))))
 
 -include $(DEPENDENCY_DIR)*.P
 
-.PHONY	: clean
+.PHONY	: clean prepare
 
 clean 	:
 	rm -rf $(TARGET) $(OBJECTS) $(DEPENDENCY_DIR)*.d $(DEPENDENCY_DIR)*.P
+
+prepare:
+	mkdir -p $(SOURCE_DIR) $(INCLUDE_DIR) $(OBJECT_DIR) $(DEPENDENCY_DIR)
 
