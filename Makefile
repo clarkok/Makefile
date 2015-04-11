@@ -32,7 +32,7 @@ define COMPILE_MACRO
 $(OBJECT_DIR)$(subst /,-,$(basename $(1)).o) 	: $(SOURCE_DIR)$(1)
 	$(COMPILE_CMD)
 	@$(DEP_CMD)
-	@sed -e 's#\s*[a-zA-Z/]*\.o#$$@#g'\
+	@sed -e 's#\s*[-_a-zA-Z/]*\.o#$$@#g'\
 		< $(DEPENDENCY_DIR)$$(addsuffix .d,$$(basename $$(subst /,-,$$<))) \
 	   	> $(DEPENDENCY_DIR)$$(addsuffix .P,$$(basename $$(subst /,-,$$<)))
 endef
